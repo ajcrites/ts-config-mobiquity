@@ -1,4 +1,5 @@
 {
+  "extends": "./node_modules/ts-config-mobiquity-core/tsconfig.json",
   "compilerOptions": {
     "jsx": "react",
     "noEmit": true,

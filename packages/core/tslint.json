@@ -1,4 +1,5 @@
 {
+  "extends": "tslint-config-airbnb",
   "rules": {
     "quotemark": [true, "single", "avoid-escape", "jsx-double"],
     "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type", "check-preblock"],
@@ -8,7 +9,6 @@
     "arrow-parens": [true, "ban-single-arg-parens"],
     "ter-arrow-parens": [true, "as-needed"],
     "no-console": [true, "log", "debug", "info", "time", "timeEnd", "trace"]
-  },
-  "extends": "tslint-config-airbnb"
+  }
 }
 

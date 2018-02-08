@@ -1,5 +1,5 @@
 {
-  "extends": "../tslint.json",
+  "extends": "ts-config-mobiquity-core",
   "rules": {
     "angular-whitespace": [true, "check-interpolation"],
     "banana-in-box": true,
