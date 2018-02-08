@@ -160,6 +160,41 @@ npx tslint --project tsconfig.json
 
 These should run without any errors.
 
+### Formatting and Linting
+Additional steps must be taken to make sure the project conforms to standards.
+
+Install dev dependencies:
+
+* `prettier`
+* `husky`
+* `lint-staged`
+
+Update your `package.json` for precommit hooks to format and lint:
+
+```diff
++    "precommit": "lint-staged",
+     "test": "tsc --project tsconfig.test.json && tslint --project tsconfig.test.json && jest --coverage"
+   },
++  "lint-staged": {
++    "**/*.ts": [
++      "prettier --write --parser typescript --single-quote --trailing-comma all",
++      "tslint --project tsconfig.test.json --fix",
++      "git add"
++    ]
++  },
+   "dependencies": {
+```
+
+This will use `prettier` to format all TypeScript files according to standards
+and run the linter. The linter will automatically fix any issues that can be
+fixed and report any issues that cannot be fixed -- developers must fix these
+before they can complete the commit.
+
+For React projects, use `"**/*.{ts,tsx}"`.
+
+You should install `prettier` and TypeScript plugins for your editor to make it
+easier to see final code changes for automated formatting in real time.
+
 ## Usage
 **Note:** convention is favored over configuration. *Avoid overriding provided
 default configuration at all costs.* If you need to make a change, consider
