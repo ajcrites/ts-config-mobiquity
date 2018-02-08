@@ -1,3 +1,15 @@
 {
-  "extends": "ts-config-mobiquity-core"
+  "extends": "ts-config-mobiquity-core",
+  "rulesDirectory": "node_modules/tslint-react/rules",
+  "rules": {
+    "jsx-alignment": true,
+    "jsx-boolean-value": "never",
+    "jsx-curly-spacing": "never",
+    "jsx-equals-spacing": "never",
+    "jsx-key": true,
+    "jsx-no-bind": true,
+    "jsx-no-string-ref": true,
+    "jsx-self-close": true,
+    "jsx-wrap-multiline": true
+  }
 }

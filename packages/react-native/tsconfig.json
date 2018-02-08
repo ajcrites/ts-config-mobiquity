@@ -1,9 +1,9 @@
 {
   "extends": "./node_modules/ts-config-mobiquity-core/tsconfig.json",
   "compilerOptions": {
+    "target": "es2015",
     "jsx": "react",
-    "noEmit": true,
-    "moduleResolution": "node"
+    "noEmit": true
   }
 }
 

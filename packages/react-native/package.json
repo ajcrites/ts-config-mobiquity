@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "main": "tslint.json",
   "dependencies": {
-    "ts-config-mobiquity-core": "^0.0.0"
+    "ts-config-mobiquity-core": "^0.0.0",
+    "tslint-react": "^3.4.0"
   }
 }
