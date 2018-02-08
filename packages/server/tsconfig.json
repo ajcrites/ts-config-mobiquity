@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/ts-config-mobiquity-core/tsconfig.json",
+  "extends": "../ts-config-mobiquity-core/tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6"
