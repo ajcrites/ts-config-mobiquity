@@ -1,4 +1,6 @@
 {
+  "name": "ts-config-mobiquity",
+  "version": "0.0.0",
   "dependencies": {
     "codelyzer": "^4.1.0"
   }
