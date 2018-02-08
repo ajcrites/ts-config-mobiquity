@@ -4,8 +4,8 @@
     "angular-whitespace": [true, "check-interpolation"],
     "banana-in-box": true,
     "templates-no-negated-async": true,
-    "directive-selector": true,
-    "component-selector": true,
+    "component-selector": [true, "element", null, "kebab-case"],
+    "directive-selector": [true, "attribute", null, "camelCase"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
@@ -20,11 +20,7 @@
     "use-pipe-transform-interface": true,
     "pipe-impure": true,
     "component-class-suffix": [true, "Component", "Page", "App"],
-    "directive-class-suffix": [true, "Directive"],
-    "templates-use-public": true,
-    "no-access-missing-member": true,
-    "invoke-injectable": true,
-    "template-to-ng-template": true
+    "directive-class-suffix": [true, "Directive"]
   },
   "rulesDirectory": ["node_modules/codelyzer"]
 }
