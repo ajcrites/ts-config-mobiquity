@@ -315,6 +315,8 @@ justifications for the changes:
 * `arrow-parens` - sync with `prettier` (I personally like how this looks too).
 * `ter-arrow-parens` - same as `arrow-parens`.
 * `no-console` - production applications should not log.
+* `no-else-after-return` - return statements from branches should be consistent
+ and explicit
 
 #### Angular
 The Angular configuration also includes the [codelyzer](https://github.com/mgechev/codelyzer)

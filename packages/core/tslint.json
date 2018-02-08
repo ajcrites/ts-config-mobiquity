@@ -8,7 +8,8 @@
     "prefer-template": [true, "allow-single-concat"],
     "arrow-parens": [true, "ban-single-arg-parens"],
     "ter-arrow-parens": [true, "as-needed"],
-    "no-console": [true, "log", "debug", "info", "time", "timeEnd", "trace"]
+    "no-console": [true, "log", "debug", "info", "time", "timeEnd", "trace"],
+    "no-else-after-return": false
   }
 }
 
