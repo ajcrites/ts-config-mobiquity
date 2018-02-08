@@ -22,6 +22,6 @@
     "component-class-suffix": [true, "Component", "Page", "App"],
     "directive-class-suffix": [true, "Directive"]
   },
-  "rulesDirectory": ["node_modules/codelyzer"]
+  "rulesDirectory": ["codelyzer"]
 }
 

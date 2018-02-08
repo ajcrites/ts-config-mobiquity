@@ -1,6 +1,6 @@
 {
   "extends": "ts-config-mobiquity-core",
-  "rulesDirectory": "node_modules/tslint-react/rules",
+  "rulesDirectory": "tslint-react/rules",
   "rules": {
     "jsx-alignment": true,
     "jsx-boolean-value": [true, "never"],
