@@ -20,11 +20,11 @@ All packages are prefixed with `ts-config-mobiquity-`. Determine the platform
 you are working on and install:
 
 ```
-yarn add ts-config-mobiquity-server
+yarn add --dev ts-config-mobiquity-server
 # or
-yarn add ts-config-mobiquity-angular
+yarn add --dev ts-config-mobiquity-angular
 # or
-yarn add ts-config-mobiquity-react-native
+yarn add --dev ts-config-mobiquity-react-native
 ```
 
 ## Setup
@@ -163,7 +163,7 @@ These should run without any errors.
 ### Formatting and Linting
 Additional steps must be taken to make sure the project conforms to standards.
 
-Install dev dependencies:
+Install dev dependencies (`yarn add --dev`):
 
 * `prettier`
 * `husky`
