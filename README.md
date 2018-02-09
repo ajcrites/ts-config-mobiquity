@@ -317,6 +317,9 @@ justifications for the changes:
 * `no-console` - production applications should not log.
 * `no-else-after-return` - return statements from branches should be consistent
  and explicit
+* `align` - sync with `prettier` for arrow function callbacks with arguments.
+* `semicolon` - sync with `prettier` for class bound methods. This is more also
+ more consistent with the requirement of a semicolon for other properties.
 
 #### Angular
 The Angular configuration also includes the [codelyzer](https://github.com/mgechev/codelyzer)
