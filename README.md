@@ -320,6 +320,8 @@ justifications for the changes:
 * `align` - sync with `prettier` for arrow function callbacks with arguments.
 * `semicolon` - sync with `prettier` for class bound methods. This is more also
  more consistent with the requirement of a semicolon for other properties.
+* `no-default-export` - justification is offered by the rule itself:
+ https://palantir.github.io/tslint/rules/no-default-export/
 
 #### Angular
 The Angular configuration also includes the [codelyzer](https://github.com/mgechev/codelyzer)

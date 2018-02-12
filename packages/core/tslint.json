@@ -11,7 +11,8 @@
     "no-console": [true, "log", "debug", "info", "time", "timeEnd", "trace"],
     "no-else-after-return": false,
     "align": [true, "parameters", "statements", "elements", "members"],
-    "semicolon": [true, "ignore-interfaces", "ignore-bound-class-methods"]
+    "semicolon": [true, "ignore-interfaces", "ignore-bound-class-methods"],
+    "no-default-export": true
   }
 }
 
