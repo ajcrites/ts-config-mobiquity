@@ -10,6 +10,7 @@
     "jsx-no-lambda": true,
     "jsx-no-string-ref": true,
     "jsx-self-close": true,
-    "jsx-wrap-multiline": true
+    "jsx-wrap-multiline": true,
+    "variable-name": [true, "check-format", "allow-pascal-case"]
   }
 }
