@@ -361,6 +361,3 @@ ruleset with suggested defaults.
 You may also want to use `jsx-use-translation-function` for projects requiring
 i18n, but this won't be necessary for all projects so it was excluded as a
 default.
-
-**Note:** I also left of `jsx-no-lambda` as I'm not familiar enough with React
-to suggest a consistent way around it.
