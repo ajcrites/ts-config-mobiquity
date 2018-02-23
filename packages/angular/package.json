@@ -1,6 +1,6 @@
 {
   "name": "ts-config-mobiquity-angular",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "main": "tslint.json",
   "dependencies": {
     "codelyzer": "^4.1.0",
