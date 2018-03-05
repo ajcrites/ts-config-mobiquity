@@ -322,6 +322,7 @@ justifications for the changes:
  more consistent with the requirement of a semicolon for other properties.
 * `no-default-export` - justification is offered by the rule itself:
  https://palantir.github.io/tslint/rules/no-default-export/
+* `no-inferrable-types` - unnecessary typings are noise
 
 #### Angular
 The Angular configuration also includes the [codelyzer](https://github.com/mgechev/codelyzer)
