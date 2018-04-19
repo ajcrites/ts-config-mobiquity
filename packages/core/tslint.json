@@ -13,7 +13,8 @@
     "quotemark": [true, "single", "avoid-escape", "jsx-double"],
     "semicolon": [true, "ignore-interfaces", "ignore-bound-class-methods"],
     "ter-arrow-parens": [true, "as-needed"],
-    "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type", "check-preblock"]
+    "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type", "check-preblock"],
+    "no-debugger": true
   }
 }
 
