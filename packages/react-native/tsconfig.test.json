@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "module": "commonjs",
     "noEmit": true,
     "skipLibCheck": true,
     "jsx": "react"
