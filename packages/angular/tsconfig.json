@@ -1,9 +1,7 @@
 {
-  "extends": "../ts-config-mobiquity-core/tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "es2015",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "sourceMap": true
+    "noEmit": true,
+    "skipLibCheck": true
   }
 }

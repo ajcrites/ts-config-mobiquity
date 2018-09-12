@@ -1,0 +1,6 @@
+{
+  "extends": "../ts-config-mobiquity-core/tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs"
+  }
+}
