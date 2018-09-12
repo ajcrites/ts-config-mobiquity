@@ -30,9 +30,9 @@ yarn add --dev ts-config-mobiquity-react-native
 ## Setup
 Once you're ready to start your project and you've installed the configuration
 corresponding to your platform, create `tsconfig.json`, `tslint.json`, and
-`tsconfig.test.json` files. This section will explain how to set these files
-up and the [Usage section](#usage) will go into more detail about what you can
-do to customize for your project's needs.
+potentially `tsconfig.build.json` files. This section will explain how to set
+these files up and the [Usage section](#usage) will go into more detail about
+what you can do to customize for your project's needs.
 
 1. Keep all of the source code / TypeScript files under the `src/` directory
  at the root of your project.
@@ -71,13 +71,13 @@ React Native project may have a `tsconfig.json` like:
 `tsconfig.json` `extends` rule requires a path to the tsconfig.json. For this
 reason, you have to give an explicit path under `node_modules` for your
 project. The base configuration is always at the root of the platform
-configuration module and named `tsconfig.json`:
+configuration module and named `tsconfig.?.json`:
 
 ```sh
 ./node_modules/ts-config-mobiquity-core/tsconfig.json
-./node_modules/ts-config-mobiquity-angular/tsconfig.json
+./node_modules/ts-config-mobiquity-angular/tsconfig.build.json
 ./node_modules/ts-config-mobiquity-react-native/tsconfig.json
-./node_modules/ts-config-mobiquity-server/tsconfig.json
+./node_modules/ts-config-mobiquity-server/tsconfig.build.json
 ```
 
 #### Directory Rules
@@ -123,16 +123,26 @@ purely from the defaults in most cases. In the [Usage section](#Usage), we'll
 discuss some possible changes.
 
 ### Configuration for Tests
-Test files should be excluded from TypeScript configuration via
+Test files should be excluded from TypeScript build configuration via
 `"exclude": ["src/**/__tests__/*"]`. However, tests still need to conform to
 formatting and code standards.
 
-To handle this, you should include a `tsconfig.test.json` file that can extend
-the corresponding file for your platform.
+Many editors including the standard VS Code use ts-server which does not allow
+configuration of the `tsconfig.json` path. This means that we still need to use
+`tsconfig.json` for test files. **Thus the `tsconfig.json` file is used for
+development and tests.** If a separate build configuration is required, it
+is recommended that you use `tsconfig.build.json`. This will be used by any
+compatible Mobiquity boilerplates/toolkits.
+
+For consistency's sake, the test/dev files in this library are named
+`tsconfig.json`. Those intended for building are `tsconfig.build.json`.
+**The exception is that the core package uses `tsconfig.test.json` for test/dev
+and `tsconfig.json` for its base.** However, you should generally not need to
+import the core package.
 
 ```
 {
-  "extends": "./node_modules/ts-config-mobiquity-react-native/tsconfig.test.json",
+  "extends": "./node_modules/ts-config-mobiquity-react-native/tsconfig.json",
   "include": ["src/**/*"]
 }
 ```
@@ -159,41 +169,6 @@ npx tslint --project tsconfig.json
 ```
 
 These should run without any errors.
-
-### Formatting and Linting
-Additional steps must be taken to make sure the project conforms to standards.
-
-Install dev dependencies (`yarn add --dev`):
-
-* `prettier`
-* `husky`
-* `lint-staged`
-
-Update your `package.json` for precommit hooks to format and lint:
-
-```diff
-+    "precommit": "lint-staged",
-     "test": "tsc --project tsconfig.test.json && tslint --project tsconfig.test.json && jest --coverage"
-   },
-+  "lint-staged": {
-+    "**/*.ts": [
-+      "prettier --write --parser typescript --single-quote --trailing-comma all",
-+      "tslint --project tsconfig.test.json --fix",
-+      "git add"
-+    ]
-+  },
-   "dependencies": {
-```
-
-This will use `prettier` to format all TypeScript files according to standards
-and run the linter. The linter will automatically fix any issues that can be
-fixed and report any issues that cannot be fixed -- developers must fix these
-before they can complete the commit.
-
-For React projects, use `"**/*.{ts,tsx}"`.
-
-You should install `prettier` and TypeScript plugins for your editor to make it
-easier to see final code changes for automated formatting in real time.
 
 ## Usage
 **Note:** convention is favored over configuration. *Avoid overriding provided
@@ -241,17 +216,17 @@ An example project structure would look like:
 │       ├── guess-command.ts
 │       ├── parsing.ts
 │       └── passthrough-commands.ts
+├── tsconfig.build.json
 ├── tsconfig.json
-├── tsconfig.test.json
 ├── tslint.json
 └── yarn.lock
 ```
 
-For your `tsconfig.json` you will need to add `include` and `exclude`:
+For your `tsconfig.json` files you will need to add `include` and `exclude`:
 
 ```json
 {
-  "extends": "./node_modules/ts-config-mobiquity-server/tsconfig.json",
+  "extends": "./node_modules/ts-config-mobiquity-server/tsconfig.build.json",
   "include": ["src/**/*"],
   "exclude": ["src/**/__tests__/*"],
 }
@@ -260,12 +235,15 @@ For your `tsconfig.json` you will need to add `include` and `exclude`:
 This tells TypeScript to compile the files it finds under `src`, but skip the
 tests.
 
+The test/dev files use `tsconfig.json`. The build file uses
+`tsconfig.build.json`.
+
 ### Additional Compiler Options
 You may often update `tsconfig.json` with the following `compilerOptions`:
 
 ```json
 {
-  "extends": "./node_modules/ts-config-mobiquity-server/tsconfig.json",
+  "extends": "./node_modules/ts-config-mobiquity-server/tsconfig.build.json",
   "include": ["src/**/*"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
@@ -292,7 +270,8 @@ You may often update `tsconfig.json` with the following `compilerOptions`:
 The core lint configuration extends [`tslint-config-airbnb`](https://github.com/progre/tslint-config-airbnb)
 which itself inherits from tslint consistent code style rules, Microsoft's own
 tslint rules, and includes the tslint-eslint-rules (tslint rules based on rules
-created for eslint / JavaScript).
+created for eslint / JavaScript). [`tslint-sonarts`](https://github.com/SonarSource/SonarTS)
+is also extended per our standards and consistency with Sonar.
 
 You have access to any of the rules created in these libraries. **Note** that as
 stated in past sections, you should avoid having to modify the linter rules at
@@ -357,6 +336,9 @@ sense for the standards of your specific project.
 You may also want to use the experimental codelyzer `i18n` rule if your project
 requires i18n.
 
+Remember that `tsconfig.build.json` is for building and `tsconfig.json` is
+for testing / development.
+
 ### React Native
 The React Native configuration includes the [tslint-react](https://github.com/palantir/tslint-react)
 ruleset with suggested defaults.
@@ -364,3 +346,8 @@ ruleset with suggested defaults.
 You may also want to use `jsx-use-translation-function` for projects requiring
 i18n, but this won't be necessary for all projects so it was excluded as a
 default.
+
+React Native supports TypeScript building through Metro, so a
+`tsconfig.build.json` is currently not needed or included. Instead, you should
+set up a `tsconfig.json` file for testing / development. This can extend
+the `tsconfig.json` for `ts-config-mobiquity-react-native`.
