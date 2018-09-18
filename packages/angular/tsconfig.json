@@ -1,7 +1,7 @@
 {
   "extends": "../ts-config-mobiquity-core/tsconfig.test.json",
   "compilerOptions": {
-    "noEmit": true,
-    "skipLibCheck": true
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   }
 }
