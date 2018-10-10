@@ -22,6 +22,9 @@
     "component-class-suffix": [true, "Component", "Page", "App"],
     "directive-class-suffix": [true, "Directive"]
   },
-  "rulesDirectory": ["codelyzer"]
+  "rulesDirectory": ["codelyzer"],
+  "jsRules": {
+    "no-empty": true
+  }
 }
 
