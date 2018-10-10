@@ -1,6 +1,7 @@
 {
   "extends": "../ts-config-mobiquity-core/tsconfig.test.json",
   "compilerOptions": {
+    "allowJs": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   }
