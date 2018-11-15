@@ -14,7 +14,8 @@
     "semicolon": [true, "ignore-interfaces", "ignore-bound-class-methods"],
     "ter-arrow-parens": [true, "as-needed"],
     "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type", "check-preblock"],
-    "no-debugger": true
+    "no-debugger": true,
+    "no-unused-expression": [true, "allow-fast-null-checks", "allow-tagged-template"]
   }
 }
 
