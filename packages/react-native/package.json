@@ -1,9 +1,9 @@
 {
   "name": "ts-config-mobiquity-react-native",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "main": "tslint.json",
   "dependencies": {
-    "ts-config-mobiquity-core": "^5.0.0",
+    "ts-config-mobiquity-core": "^6.0.0",
     "tslint-react": "^3.4.0"
   }
 }
