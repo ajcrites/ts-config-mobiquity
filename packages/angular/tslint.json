@@ -1,7 +1,7 @@
 {
   "extends": "ts-config-mobiquity-core",
   "rules": {
-    "angular-whitespace": [true, "check-interpolation"],
+    "angular-whitespace": false,
     "banana-in-box": true,
     "templates-no-negated-async": true,
     "component-selector": [true, "element", null, "kebab-case"],

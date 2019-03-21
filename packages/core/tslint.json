@@ -1,21 +1,23 @@
 {
   "extends": ["tslint-config-airbnb", "tslint-sonarts"],
   "rules": {
-    "align": [true, "parameters", "statements", "elements", "members"],
-    "arrow-parens": [true, "ban-single-arg-parens"],
+    "align": false,
+    "arrow-parens": false,
     "curly": true,
     "no-angle-bracket-type-assertion": true,
     "no-console": [true, "log", "debug", "info", "time", "timeEnd", "trace"],
+    "no-debugger": true,
     "no-else-after-return": false,
     "no-default-export": true,
     "no-inferrable-types": true,
+    "no-unused-expression": [true, "allow-fast-null-checks", "allow-tagged-template"],
     "prefer-template": [true, "allow-single-concat"],
-    "quotemark": [true, "single", "avoid-escape", "jsx-double"],
-    "semicolon": [true, "ignore-interfaces", "ignore-bound-class-methods"],
-    "ter-arrow-parens": [true, "as-needed"],
-    "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type", "check-preblock"],
-    "no-debugger": true,
-    "no-unused-expression": [true, "allow-fast-null-checks", "allow-tagged-template"]
+    "quotemark": false,
+    "semicolon": false,
+    "ter-arrow-parens": false,
+    "ter-indent": false,
+    "trailing-comma": false,
+    "whitespace": false
   }
 }
 
