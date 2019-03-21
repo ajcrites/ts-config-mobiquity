@@ -1,8 +1,6 @@
 {
-  "extends": ["tslint-config-airbnb", "tslint-sonarts"],
+  "extends": ["tslint-config-airbnb", "tslint-sonarts", "tslint-config-prettier"],
   "rules": {
-    "align": false,
-    "arrow-parens": false,
     "curly": true,
     "no-angle-bracket-type-assertion": true,
     "no-console": [true, "log", "debug", "info", "time", "timeEnd", "trace"],
@@ -11,13 +9,7 @@
     "no-default-export": true,
     "no-inferrable-types": true,
     "no-unused-expression": [true, "allow-fast-null-checks", "allow-tagged-template"],
-    "prefer-template": [true, "allow-single-concat"],
-    "quotemark": false,
-    "semicolon": false,
-    "ter-arrow-parens": false,
-    "ter-indent": false,
-    "trailing-comma": false,
-    "whitespace": false
+    "prefer-template": [true, "allow-single-concat"]
   }
 }
 
