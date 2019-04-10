@@ -1,5 +1,5 @@
 {
-  "extends": "../ts-config-mobiquity-core/tsconfig.json",
+  "extends": "ts-config-mobiquity-core",
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
