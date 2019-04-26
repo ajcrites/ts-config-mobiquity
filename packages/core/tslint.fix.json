@@ -1,14 +1,16 @@
 {
   "extends": "ts-config-mobiquity-core/tslint.json",
-  "ordered-imports": [
-    true,
-    {
-      "grouped-imports": true,
-      "groups": [
-        { "name": "relative paths", "match": "^\\.\\.?", "order": 30 },
-        { "name": "project imports", "match": "^src\/", "order": 20 },
-        { "name": "libraries", "match": ".*", "order": 10 }
-      ]
-    }
-  ]
+  "rules": {
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true,
+        "groups": [
+          { "name": "relative paths", "match": "^\\.\\.?", "order": 30 },
+          { "name": "project imports", "match": "^src\/", "order": 20 },
+          { "name": "libraries", "match": ".*", "order": 10 }
+        ]
+      }
+    ]
+  }
 }
