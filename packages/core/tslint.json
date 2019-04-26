@@ -3,6 +3,7 @@
   "rules": {
     "curly": true,
     "no-angle-bracket-type-assertion": true,
+    "no-any": true,
     "no-console": [true, "log", "debug", "info", "time", "timeEnd", "trace"],
     "no-debugger": true,
     "no-else-after-return": false,

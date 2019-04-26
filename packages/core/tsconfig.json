@@ -6,6 +6,7 @@
     "declaration": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "noImplicityAny": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["dom", "es7"]
   },

@@ -40,7 +40,8 @@ what you can do to customize for your project's needs.
 
 **Note:** convention is favored over configuration. *Avoid overriding provided
 default configuration at all costs.* If you need to make a change, consider
-submitting a pull request.
+submitting a pull request to this repo instead. There are certain configurations
+that *must* be project-specific and will be detailed below.
 
 You can make use of the default configuration and linting rules using the
 `extends` property for `tsconfig.json` and `tslint.json`. For example, your
@@ -48,8 +49,9 @@ React Native project may have a `tsconfig.json` like:
 
 ```json
 {
-  "extends": "./node_modules/ts-config-mobiquity-react-native/tsconfig.json",
+  "extends": "ts-config-mobiquity-react-native",
   "compilerOptions": {
+    "target": "es5",
     "baseUrl": "."
   },
   "excludes": ["src/**/__tests__/*"]
@@ -67,19 +69,6 @@ React Native project may have a `tsconfig.json` like:
 }
 ```
 
-### Extending `tsconfig`
-`tsconfig.json` `extends` rule requires a path to the tsconfig.json. For this
-reason, you have to give an explicit path under `node_modules` for your
-project. The base configuration is always at the root of the platform
-configuration module and named `tsconfig.?.json`:
-
-```sh
-./node_modules/ts-config-mobiquity-core/tsconfig.json
-./node_modules/ts-config-mobiquity-angular/tsconfig.build.json
-./node_modules/ts-config-mobiquity-react-native/tsconfig.json
-./node_modules/ts-config-mobiquity-server/tsconfig.build.json
-```
-
 #### Directory Rules
 Most rules relating to directories do not work properly when using imported
 configurations because the directories are relative to the location from
@@ -90,7 +79,7 @@ can use a configuration like this:
 
 ```json
 {
-  "extends": "./node_modules/ts-config-mobiquity-server/tsconfig.json",
+  "extends": "ts-config-mobiquity-server",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "lib"
@@ -103,24 +92,6 @@ can use a configuration like this:
 **Note:** At this time it's not fully clear to me under what circumstances
 `rootDir` is needed or whether `node_modules` needs to be `exclude`d. In my
 experience, you can omit `rootDir` and leave `node_modules` out of `exclude`.
-
-### Extending `tslint`
-Extending `tslint` is simpler since the `tslint` `extends` rule allows you to
-use CommonJS style importing.
-
-In other words, you can just specify the name of the library you would like to
-import. All packages export their `tslint.json` as the main export.
-
-```sh
-ts-config-mobiquity-core
-ts-config-mobiquity-angular
-ts-config-mobiquity-react-native
-ts-config-mobiquity-server
-```
-
-Additional rules to tslint should be rare and you should be able to work
-purely from the defaults in most cases. In the [Usage section](#Usage), we'll
-discuss some possible changes.
 
 ### Configuration for Tests
 Test files should be excluded from TypeScript build configuration via
@@ -142,7 +113,7 @@ import the core package.
 
 ```
 {
-  "extends": "./node_modules/ts-config-mobiquity-react-native/tsconfig.json",
+  "extends": "ts-config-mobiquity-react-native",
   "include": ["src/**/*"]
 }
 ```
@@ -226,7 +197,7 @@ For your `tsconfig.json` files you will need to add `include` and `exclude`:
 
 ```json
 {
-  "extends": "./node_modules/ts-config-mobiquity-server/tsconfig.build.json",
+  "extends": "ts-config-mobiquity-server/tsconfig.build.json",
   "include": ["src/**/*"],
   "exclude": ["src/**/__tests__/*"],
 }
@@ -239,11 +210,11 @@ The test/dev files use `tsconfig.json`. The build file uses
 `tsconfig.build.json`.
 
 ### Additional Compiler Options
-You may often update `tsconfig.json` with the following `compilerOptions`:
+You may often update `tsconfig.build.json` with the following `compilerOptions`:
 
 ```json
 {
-  "extends": "./node_modules/ts-config-mobiquity-server/tsconfig.build.json",
+  "extends": "ts-config-mobiquity-server/tsconfig.build.json",
   "include": ["src/**/*"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
@@ -266,12 +237,37 @@ You may often update `tsconfig.json` with the following `compilerOptions`:
  other TypeScript applications. This will create the declaration `.d.ts` files
  as part of the build.
 
+### `tslint.fix.json`
+A `tslint.fix.json` is also exported for each library. This includes linter
+rules that have fixes that can update TypeScript files according to our
+preferred style that are not handled by `prettier`. These are kept in a separate
+file since they do not have an impact on development and do not need to be fixed
+by developers since they have a fixer. Thus, they are in a separate file that
+extends from the base linter rules.
+
+This avoids distracting developers with style issues that will be fixed
+automatically by hooks.
+
+You can extend from the core linter rules as well as your own configuration in
+case you have any custom rules (*try to avoid adding custom rules, though*).
+
+```
+{
+  "extends": ["ts-config-mobuquity-angular/tslint.fix.json", "./tslint.json"]
+}
+```
+
+You can use this for commit hooks running `tslint --fix`.
+
 ### Linting Rules
 The core lint configuration extends [`tslint-config-airbnb`](https://github.com/progre/tslint-config-airbnb)
 which itself inherits from tslint consistent code style rules, Microsoft's own
 tslint rules, and includes the tslint-eslint-rules (tslint rules based on rules
 created for eslint / JavaScript). [`tslint-sonarts`](https://github.com/SonarSource/SonarTS)
-is also extended per our standards and consistency with Sonar.
+is also extended per our standards and consistency with Sonar. Finally,
+[`tslint-config-prettier`](https://github.com/prettier/tslint-config-prettier)
+is used to disable all style rules that are handled by prettier. Prettier should
+be used as a commit hook for all Mobiquity projects.
 
 You have access to any of the rules created in these libraries. **Note** that as
 stated in past sections, you should avoid having to modify the linter rules at
@@ -282,8 +278,6 @@ creating a pull request.
 Core has a few differences from the Airbnb base. Below are my personal
 justifications for the changes:
 
-* `quotemark` - sync with `prettier`
-* `whitespace` - sync with `prettier`
 * `curly` - omitting braces around statements can cause unexpected behavior if
  another expression needs to be added to the block later.
 * `no-angle-bracket-type-assertion` - forces casting to be written more
@@ -291,14 +285,10 @@ justifications for the changes:
 * `prefer-template` - template strings are much clearer and more semantic. A
  single concatenation for a single value is common and clear enough to warrant
  an exception. Also syncs with `prettier`.
-* `arrow-parens` - sync with `prettier` (I personally like how this looks too).
-* `ter-arrow-parens` - same as `arrow-parens`.
 * `no-console` - production applications should not log.
+* `no-debugger` - see above.
 * `no-else-after-return` - return statements from branches should be consistent
  and explicit
-* `align` - sync with `prettier` for arrow function callbacks with arguments.
-* `semicolon` - sync with `prettier` for class bound methods. This is more also
- more consistent with the requirement of a semicolon for other properties.
 * `no-default-export` - justification is offered by the rule itself:
  https://palantir.github.io/tslint/rules/no-default-export/
 * `no-inferrable-types` - unnecessary typings are noise
@@ -307,7 +297,7 @@ justifications for the changes:
 The Angular configuration also includes the [codelyzer](https://github.com/mgechev/codelyzer)
 ruleset with suggested defaults.
 
-You should change some of the rules for your project:
+You must change some of the rules for your project:
 
 * `component-selector`
 * `directive-selector`
