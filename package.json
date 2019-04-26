@@ -2,6 +2,6 @@
   "name": "ts-config-mobiquity",
   "version": "0.0.0",
   "devDependencies": {
-    "lerna": "^3.4.3"
+    "lerna": "^3.13.4"
   }
 }
