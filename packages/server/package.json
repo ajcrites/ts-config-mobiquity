@@ -1,9 +1,9 @@
 {
   "name": "ts-config-mobiquity-server",
-  "version": "9.0.0-alpha.3",
+  "version": "9.0.0",
   "main": "tslint.json",
   "dependencies": {
     "@types/node": "^8.9.1",
-    "ts-config-mobiquity-core": "^9.0.0-alpha.3"
+    "ts-config-mobiquity-core": "^9.0.0"
   }
 }
