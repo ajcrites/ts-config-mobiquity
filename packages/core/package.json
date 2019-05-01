@@ -1,7 +1,7 @@
 {
   "name": "ts-config-mobiquity-core",
   "main": "tslint.json",
-  "version": "9.1.0",
+  "version": "9.1.1",
   "dependencies": {
     "tslint-config-airbnb": "^5.11.0",
     "tslint-config-prettier": "^1.18.0",
