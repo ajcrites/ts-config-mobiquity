@@ -10,7 +10,7 @@ module.exports = {
       },
     },
     {
-      files: '*.scss',
+      files: ['*.scss', '*.css'],
       options: {
         singleQuote: false,
       },

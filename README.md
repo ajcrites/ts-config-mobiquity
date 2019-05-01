@@ -141,6 +141,32 @@ npx tslint --project tsconfig.json
 
 These should run without any errors.
 
+### Configuration for prettier
+We use [`prettier`](https://prettier.io/) for code formatting. This repo also
+exports a `prettier.config.js` with our prettier configuration settings. You
+can use this by adding it to `package.json`:
+
+```
+{
+  "dependencies": "...",
+  "...",
+  "prettier": "ts-config-mobiquity-<platform>/prettier.config.js"
+}
+```
+
+Avoid creating your own custom rules for prettier. If you feel that you need to
+do this, consider creating a pull request here to update the prettier config.
+
+You can confirm that the prettier configuration is working properly via
+
+```
+npx prettier <some-file>
+```
+
+This should print out the prettified version of the corresponding file. For
+TypeScript/JavaScript, it should use single-quotes and trailing commas. For
+CSS, it should use double-quotes.
+
 ## Usage
 **Note:** convention is favored over configuration. *Avoid overriding provided
 default configuration at all costs.* If you need to make a change, consider
