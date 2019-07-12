@@ -1,7 +1,9 @@
 {
   "extends": "ts-config-mobiquity-core/tsconfig.test.json",
   "compilerOptions": {
-    "jsx": "react"
+    "jsx": "react",
+    "esModuleInterop": true,
+    "module": "es6"
   }
 }
 
