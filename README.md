@@ -236,6 +236,15 @@ The test/dev files use `tsconfig.json`. The build file uses
 `tsconfig.build.json`.
 
 ### Additional Compiler Options
+**Note:** You should typically *avoid* making configuration changes and stick
+with convention of these settings and default overrides provided by
+boilerplates. If you need to make changes, consider submitting a pull request to
+this repository rather than overriding your project's configuration.
+
+The following configuration changes _need_ to be per-project and cannot be part
+of these settings because they are based on project paths. See project
+boilerplates for correct settings.
+
 You may often update `tsconfig.build.json` with the following `compilerOptions`:
 
 ```json
@@ -283,7 +292,7 @@ case you have any custom rules (*try to avoid adding custom rules, though*).
 }
 ```
 
-You can use this for commit hooks running `tslint --fix`.
+You can use this for commit hooks running `tslint --fix -c tslint.fix.json`.
 
 ### Linting Rules
 The core lint configuration extends [`tslint-config-airbnb`](https://github.com/progre/tslint-config-airbnb)
