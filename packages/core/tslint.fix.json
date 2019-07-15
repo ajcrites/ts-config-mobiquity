@@ -1,6 +1,15 @@
 {
   "extends": "ts-config-mobiquity-core/tslint.json",
   "rules": {
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double",
+      "avoid-template",
+      "avoid-escape"
+    ],
+    "interface-over-type-literal": true,
+    "arrow-return-shorthand": [true, "multiline"],
     "ordered-imports": [
       true,
       {
