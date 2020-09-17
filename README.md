@@ -1,3 +1,6 @@
+**DEPRECATED:** This project has been deprecated in favor of Mobiquity's
+internal configuration packages and will no longer be maintained.
+
 # TypeScript Configuration for Mobiquity
 
 This is a collection of configurations for working with TypeScript at Mobiquity.
